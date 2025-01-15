@@ -5,12 +5,6 @@ import './App.css'
 import { FaUser } from "react-icons/fa";
 
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  age: number
-}
 
 function App() {
   const { data, isPending } = useQuery({
@@ -28,12 +22,12 @@ function App() {
     }
   })
 
-  const mutationUpdate = useMutation({
-    mutationFn: (id) => axios.put(`https://6781424785151f714b0a074d.mockapi.io/users/${id}`),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    },
-  });
+  // const mutationUpdate = useMutation({
+  //   mutationFn: (id) => axios.put(`https://6781424785151f714b0a074d.mockapi.io/users/${id}`),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({ queryKey: ['users'] });
+  //   },
+  // });
 
   const deleteMutation = useMutation({
     mutationFn: (id) => axios.delete(`https://6781424785151f714b0a074d.mockapi.io/users/${id}`),
@@ -43,7 +37,6 @@ function App() {
   })
 
   const [newUser, setNewUser] = useState({ name: '', email: '', age: 0 });
-  const [editUser, setEditUser] = useState<User | null>(null)
   const handleAdd = () => {
     mutation.mutate(newUser);
     setNewUser({ name: '', email: '', age: 0 });
