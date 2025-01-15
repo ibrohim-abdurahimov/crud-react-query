@@ -71,7 +71,7 @@ function App() {
           <button onClick={handleAdd} className='bg-green-700 text-white py-1 px-5 rounded-lg'>Add User</button>
         </div>
         {data && (
-          <div className='container m-auto grid grid-cols-4 gap-5'>
+          <div className='container m-auto grid grid-cols-4 gap-5 mb-5'>
             {data.map((item: any) => (
               <div key={item.id} className='shadow-md py-4 px-3 flex flex-col gap-2'>
                 <FaUser className='m-auto text-3xl'/>
